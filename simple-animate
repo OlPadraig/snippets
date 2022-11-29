@@ -1,0 +1,141 @@
+<!--- FADE FROM RIGHT & BOTTOM ON SCROLL --->
+<script>
+    const imagesRight = document.querySelectorAll('.f-right');
+    const imagesLeft = document.querySelectorAll('.f-left');
+    const imagesUp = document.querySelectorAll('.f-up');
+    const imagesDown = document.querySelectorAll('.f-down');
+
+    obs1 = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.intersectionRatio > 0) {
+          entry.target.classList.add('fade-in-right');
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+
+    obs2 = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.intersectionRatio > 0) {
+          entry.target.classList.add('fade-in-left');
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+    
+    obs3 = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.intersectionRatio > 0) {
+          entry.target.classList.add('fade-in-up');
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+    
+    obs4 = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.intersectionRatio > 0) {
+          entry.target.classList.add('fade-in-down');
+          observer.unobserve(entry.target);
+        }
+      });
+    });
+    
+    imagesRight.forEach(image => {
+      obs1.observe(image);
+    });
+    imagesLeft.forEach(image => {
+      obs2.observe(image);
+    });
+    imagesUp.forEach(image => {
+      obs3.observe(image);
+    });
+    imagesDown.forEach(image => {
+      obs4.observe(image);
+    });
+   * </script>
+
+
+<style>
+
+    /****** FADE FROM RIGHT *****/
+
+.f-right {
+	opacity: 0; 
+	transform: translateX(50%)
+}
+
+.fade-in-right {
+	animation-name: fadeInRight;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: .85s;
+       animation-fill-mode:forwards;
+}
+
+@keyframes fadeInRight {
+	0% {opacity: 0;  transform: translateX(50%)}
+	100% {opacity: 1; transform: translateX(0%)}
+}
+
+/****** FADE FROM LEFT *****/
+
+.f-left{
+	opacity: 0; 
+	transform: translateX(-50%)
+}
+
+.fade-in-left {
+	animation-name: fadeInLeft;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: .85s;
+       animation-fill-mode:forwards;
+}
+
+@keyframes fadeInLeft {
+	0% {opacity: 0;  transform: translateX(-50%)}
+	100% {opacity: 1; transform: translateX(0%)}
+}
+
+/****** FADE FROM TOP *****/
+
+.f-down {
+        opacity: 0;
+        transform:translateY(50%)
+}
+
+.fade-in-down {
+        animation-name: fadeInDown;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: .85s;
+       animation-fill-mode:forwards;
+}
+
+@keyframes fadeInDown {
+	0% {opacity: 0;  transform: translateY(-50%)}
+	100% {opacity: 1; transform: translateY(0%)}
+}
+
+/****** FADE FROM BOTTOM *****/
+
+.f-up {
+        opacity: 0;
+        transform:translateY(50%)
+}
+
+.fade-in-up {
+        animation-name: fadeInUp;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: .85s;
+       animation-fill-mode:forwards;
+}
+
+@keyframes fadeInUp {
+	0% {opacity: 0;  transform: translateY(50%)}
+	100% {opacity: 1; transform: translateY(0%)}
+}
+
+</style>
